@@ -40,6 +40,7 @@ Objective: Deepened understanding of recursion through the implementation of thr
 Concept Summary:
 1. Recursion
 
+
 **Assignment 1**
 Objective: The code models US currency by creating classes for coins and notes, incorporating features to manage quantity, compute total value and weight (for coins), and handle adjustments in quantity, all while ensuring quantities do not fall below zero, and includes methods to present monetary amounts in a formatted string.
 
