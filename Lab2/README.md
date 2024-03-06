@@ -2,5 +2,5 @@ Lab 2 Objective: Developed a program for a tiny convenience store that only sell
 
 Concept Summary:
 
-Class design
-Encapsulation
+1. Class design
+2. Encapsulation
