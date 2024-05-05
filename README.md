@@ -12,6 +12,15 @@ Objective: Simulates the Pokémon encounter and capture process from Pokémon GO
 **Assignment 4**
 Objective: Implements an internationalized number guessing game that supports English, Spanish, French, and Simplified Chinese, leveraging object-oriented programming and polymorphism to display interface strings in the user-selected language, allowing multiple guesses until the correct number is identified.
 
+**Assignment 5**
+Objective:  Enables users to manage and visualize a family tree using data structures to represent individual family members and their relationships.
+
+**Assignment 6**
+Objective: Implements the Connect 4 game in Java, allowing two players to take turns dropping tokens into a grid with the aim of aligning four tokens in a row, either horizontally, vertically, or diagonally.
+
+**Assignment 7**
+Objective: Calculates all prime numbers below 10,000, identifies a random non-prime number, and determines which prime numbers combine to create it.
+
 **Lab 2**
 Objective: Developed a program for a tiny convenience store that only sells bread and milk
 
@@ -57,6 +66,34 @@ Objective: Deepened understanding of recursion through the implementation of thr
 
 Concept Summary:
 1. Recursion
+
+**Lab 8**
+Objective: Develop a program to calculate the number of seconds between two user-entered times in 24-hour format, incorporating robust exception handling for invalid time inputs.
+
+Concept Summary:
+1. Exception Handling
+2. String Manipulation and Parsing
+
+**Lab 9**
+Objective: Create a program to compare two text files line by line, reporting differences with detailed information on discrepancies, and handle potential I/O exceptions.
+
+Concept Summary:
+1. File Handling and I/O Operations
+2. String Comparison
+
+**Lab 10**
+Objective: Implement a multithreading program using Runnable in Java or Threads in C# to simulate the independent activities of quintuplets sleeping and waking at random times.
+
+Concept Summary:
+1. Multithreading
+2. Runnable and Thread Implementation
+3. Exception Handling
+
+**Lab 11**
+Objective: Program to manage a Blu-ray collection using an object-oriented approach, including creating a class to represent individual discs, using a linked list to store them, and providing a user interface to manage the collection.
+
+Concept Summary:
+1. Linked List Data Structure
 
 
 
