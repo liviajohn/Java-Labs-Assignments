@@ -1,164 +1,165 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.ArrayList;
 import java.util.Scanner;
-class Question {
-    private String ques;
-    private String ans;
-    private int diff;
 
-    Question(String question, String answer, int difficulty) {
-        ques = question;
-        ans = answer;
-        diff = difficulty;
+class Question{
+    private String question;
+    private String answer;
+    private int difficulty;
+
+    public Question(String question, String answer, int difficulty){
+        this.question = question;
+        this.answer = answer;
+        this.difficulty = difficulty;
     }
 
-    //getters
-    public String getQues() {
-        return ques;
+    public String getQuestion(){
+        return question;
+    }
+    public String getAnswer(){
+        return answer;
+    }
+    public int getDifficulty(){
+        return difficulty;
     }
 
-    public String getAns() {
-        return ans;
+    public void setQuestion(String ques){
+        question = ques;
     }
 
-    public int getDiff() {
-        return diff;
+    public void setAnswer(String ans){
+        answer = ans;
     }
 
-//setters
-    public void setQues(String ques1) {
-        ques = ques1;
+    public void setDifficulty(int diff){
+        difficulty = diff;
     }
 
-    public void setAns(String ans1) {
-        ans = ans1;
-    }
-
-    public void setDiff(int diff1) {
-        diff = diff1;
-    }
 }
 
-class Quiz{
+class Quiz {
+    ArrayList<Question> questionList = new ArrayList<>();
 
-    ArrayList<Question> quesList = new ArrayList<>();
     public void add_question() {
-        Scanner sc = new Scanner (System.in);
+        Scanner sc = new Scanner(System.in);
+        System.out.println("What is the question you would like to add?");
+        String newQues = sc.nextLine();
+        System.out.println("What is the answer to the question?");
+        String newAns = sc.nextLine();
+        System.out.println("What is the level of difficulty? (1-3)");
+        int newDiff = sc.nextInt();
 
+        Question newQuestion = new Question(newQues, newAns, newDiff);
+        questionList.add(newQuestion);
 
-        System.out.println("What is the question text?");
-        String newQuestion= sc.nextLine();
-
-        System.out.println("What is the answer?");
-        String newAnswer = sc.nextLine();
-
-        System.out.println("How difficult? (1-3)");
-        int newDifficulty = sc.nextInt();
-        sc.nextLine();
-
-        Question addQuestion = new Question(newQuestion, newAnswer, newDifficulty);
-        quesList.add(addQuestion);
     }
 
     public void remove_question() {
-        Scanner sc = new Scanner (System.in);
+        int i = 0;
+        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Which question number would you like to remove?");
-        for (int i = 0; i < quesList.size(); i++) {
-            System.out.println(i + ". " + quesList.get(i).getQues());
+        for (Question question : questionList){
+            System.out.println(i +". " + question.getQuestion());
+            i++;
         }
 
+        System.out.println("Which question would you like to remove?");
         int removeQuestion = sc.nextInt();
-        sc.nextLine();
-
-        if (removeQuestion >= 0 && removeQuestion < quesList.size()) {
-            quesList.remove(removeQuestion);
-            System.out.println("Question removed successfully.");
+        if (removeQuestion < questionList.size() && removeQuestion >= 0) {
+            questionList.remove(removeQuestion);
         } else {
-            System.out.println("Invalid question number.");
+            System.out.println("That is an invalid choice");
         }
     }
 
     public void modify_question() {
-        Scanner sc = new Scanner (System.in);
+        int i = 0;
+        Scanner sc = new Scanner(System.in);
+        for (Question question: questionList){
+            System.out.println(i + ". " + question.getQuestion());
+            i++;
+        }
 
         System.out.println("Which question number would you like to modify?");
-        for (int i = 0; i < quesList.size(); i++) {
-            System.out.println(i + ". " + quesList.get(i).getQues());
-        }
         int modifyQuestion = sc.nextInt();
         sc.nextLine();
 
-        if (modifyQuestion >= 0 && modifyQuestion < quesList.size()) {
+        if (modifyQuestion < questionList.size() && modifyQuestion >= 0) {
+            System.out.println("What is the new question text?");
+            String modQues = sc.nextLine();
+            System.out.println("What is the new answer text?");
+            String modAns = sc.nextLine();
+            System.out.println("What is the new level of difficulty?");
+            int modDiff = sc.nextInt();
 
-        System.out.println("What is the new question text?");
-        String newQuestion= sc.nextLine();
-
-        System.out.println("What is the new answer?");
-        String newAnswer = sc.nextLine();
-
-        System.out.println("What is the new difficulty? (1-3)");
-        int newDifficulty = sc.nextInt();
-        sc.nextLine();
-
-            Question updatedQuestion = new Question(newQuestion, newAnswer, newDifficulty);
-            quesList.set(modifyQuestion, updatedQuestion);
-            System.out.println("Question modified successfully.");
+            Question modifiedQuestion = new Question(modQues, modAns, modDiff);
+            questionList.set(modifyQuestion, modifiedQuestion);
+            System.out.println("Question modified successfully");
         } else {
             System.out.println("Invalid question number.");
         }
     }
 
     public void give_quiz() {
+        int points = 0;
+        int i =0;
         Scanner sc = new Scanner(System.in);
-        int correctAnswers = 0;
-
-        for (Question question : quesList) {
-            System.out.println(question.getQues());
+        for (Question question : questionList) {
+            System.out.println(i + ". " + question.getQuestion());
             String userAnswer = sc.nextLine();
+            i++;
 
-            if (userAnswer.equalsIgnoreCase(question.getAns())) {
-                System.out.println("Correct");
-                correctAnswers++;
+            if (userAnswer.equalsIgnoreCase(question.getAnswer())) {
+                System.out.println("That is correct!");
+                points++;
             } else {
-                System.out.println("Incorrect");
+                System.out.println("That is incorrect.");
             }
         }
+        System.out.println("You correctly answered " + points + " out of " + questionList.size() + " questions.");
+    }
 
-        System.out.println("You got " + correctAnswers + " out of " + quesList.size());
+}
+
+public class Main{
+    public static void main (String[] args){
+        Quiz quiz = new Quiz();
+        int choice = 0;
+
+        do{
+            Scanner sc = new Scanner (System.in);
+            System.out.println("What would you like to do?");
+            System.out.println("1. Add a question to the quiz.");
+            System.out.println("2. Remove a question from the quiz.");
+            System.out.println("3. Modify a question in the quiz.");
+            System.out.println("4. Take the quiz.");
+            System.out.println("5. Quit");
+
+            choice = sc.nextInt();
+
+            switch(choice){
+                case 1: //add question
+                    quiz.add_question();
+                    break;
+                case 2: //remove question
+                    quiz.remove_question();
+                    break;
+                case 3: //modify question
+                    quiz.modify_question();
+                    break;
+                case 4: //take quiz
+                    quiz.give_quiz();
+                    break;
+                case 5: //quit
+                    System.out.println("Shutting down...");
+                    break;
+                default:
+                    System.out.println("Invalid number.");
+                    break;
+            }
+
+        } while(choice != 5);
     }
 }
 
 
-public class Main {
-    public static void main(String[] args) {
-        Quiz quiz = new Quiz();
-        Scanner sc = new Scanner(System.in);
 
-        while (true) {
-        System.out.println("1. Add a question to the quiz\n2. Remove a question from the quiz \n3. Modify a question in the quiz\n4. Take the quiz\n5. Quit");
-        int choice = sc.nextInt();
-        sc.nextLine();  // Consume the newline character
-
-        switch (choice) {
-            case 1:
-                quiz.add_question();
-                break;
-            case 2:
-                quiz.remove_question();
-                break;
-            case 3:
-                quiz.modify_question();
-                break;
-            case 4:
-                quiz.give_quiz();
-                break;
-            case 5:
-                System.out.println("Done");
-                System.exit(0);
-            default:
-                System.out.println("Invalid choice. Please select a valid option.");
-        }
-    }
-}}
