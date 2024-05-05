@@ -1,34 +1,33 @@
-public abstract class Account {
-    private static int nextAccountNumber = 10001;
+public class Account {
     private int accountNumber;
-    private double balance;
+    private double balance =0;
+    private static int nextAccountNumber = 1001;
 
-    public Account() {
-        this(0);
-    }
 
-    public Account(double initialBalance) {
-        balance = initialBalance;
+    public Account(double balance){
+        this.balance = balance;
         accountNumber = nextAccountNumber++;
+
     }
 
-    public int getAccountNumber() {
+    public int getAccountNumber(){
         return accountNumber;
     }
 
-    public double getBalance() {
+    public double getBalance(){
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setBalance(double amount){
+        balance = amount;
     }
 
-    public void deposit(double amount) {
+    public void withdraw(double amount){
+        balance -= amount;
+    }
+
+    public void deposit(double amount){
         balance += amount;
     }
 
-    public void withdraw(double amount) {
-        balance -= amount;
-    }
 }
