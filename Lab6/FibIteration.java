@@ -1,6 +1,7 @@
 class FibIteration implements FindFib {
     @Override
     public int calculate_fib(int n) {
+
         if (n <= 2)
             return 1;
 
